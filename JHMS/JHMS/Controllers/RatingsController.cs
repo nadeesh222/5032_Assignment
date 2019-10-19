@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using JHMS.Models;
@@ -53,6 +54,25 @@ namespace JHMS.Controllers
             return View();
         }
 
+        public String getWithoutCrossScript(String s)
+        {
+
+            if (s != null)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append(HttpUtility.HtmlEncode(s));
+
+
+                sb.Replace("&lt;script&gt", "");
+                sb.Replace("&lt;div&gt", "");
+                sb.Replace("&lt;p&gt", "");
+                sb.Replace("&b;p&gt", "");
+                sb.Replace("&b;style&gt", "");
+                return sb.ToString();
+            }
+
+            return "";
+        }
         public ActionResult R(int? id)
         {
           
@@ -103,10 +123,13 @@ namespace JHMS.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Rate([Bind(Include = "Id,rate,branchId,bookingId,comment")] Rating rating)
         {
             if (ModelState.IsValid)
             {
+                rating.comment= getWithoutCrossScript(rating.comment);
+
                 db.Ratings.Add(rating);
                 db.SaveChanges();
                 return RedirectToAction("Index");
