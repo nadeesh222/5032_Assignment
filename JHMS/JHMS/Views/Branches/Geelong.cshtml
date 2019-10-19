@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewBag.Title = "Melbourne";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Geelong</h2>
+
+<html>
+<head>
+
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+
+
+        /* Always set the map height explicitly to define the size of the div
+            * element that contains the map. */
+        #map {
+            height: 50%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        /*html, body {
+                    height: 100%;
+                    margin: 0;
+                    padding: 0;
+                }*/
+    </style>
+</head>
+<body>
+
+    @section Scripts {
+
+        <div class="row">
+
+            <div class="col-md-2"></div>
+            <div id="map1" class="col-md-5" style="height: 300px"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-2"></div>
+            <div class="col-md-5">
+                <br /><br />
+                <h4> Address:1 clare street, Franskton</h4><br />
+                <h4> Contact Number: 0456737672</h4>
+
+
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+        </div>
+
+
+
+
+
+
+        <script>
+            var map;
+            function initMap() {
+
+
+
+
+                var melBranch = { lat: -38.144931, lng: 144.360412 };
+                map = new google.maps.Map(document.getElementById('map1'), {
+                    center: { lat: -38.144931, lng: 144.360412 },
+                    zoom: 4
+                });
+                var marker = new google.maps.Marker({
+                    position: melBranch, map: map,
+                    label: { color: '#000000', fontWeight: 'bold', fontSize: '18px', text: 'Geelong Branch(1 clare street, Franskton)' }
+                });
+                map.addListener('center_changed', function () {
+                    // 3 seconds after the center of the map has changed, pan back to the
+                    // marker.
+                    window.setTimeout(function () {
+                        map.panTo(marker.getPosition());
+                    }, 3000);
+                });
+
+
+
+                marker.addListener('click', function () {
+                    map.setZoom(15);
+                    map.setCenter(marker.getPosition());
+                });
+
+
+
+
+
+
+
+
+
+
+                var request = {
+                    location: melBranch,
+                    radius: '500',
+                    type: ['park']
+                };
+
+                var service = new google.maps.places.PlacesService(map);
+
+                service.findPlaceFromQuery(request, function (results, status) {
+                    if (status === google.maps.places.PlacesServiceStatus.OK) {
+                        for (var i = 0; i < results.length; i++) {
+                            createMarker(results[i]);
+                        }
+                        map.setCenter(results[0].geometry.location);
+                    }
+                });
+
+
+
+
+            }
+
+
+        </script>
+
+
+
+
+
+
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPKMXivFGElU_HkZLstosNCRUp3HWwiL4&callback=initMap&libraries=places" async defer></script>
+
+        <a class="btn btn-default" href="/Branches/GeeAttractions">Show me Cafes</a>
+        <a class="btn btn-default" href="/Locations/Index">Search attractions</a>
+
+
+    }
+
+</body>
+</html>

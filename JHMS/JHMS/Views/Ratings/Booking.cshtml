@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<JHMS.Models.Booking>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <thead>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.fromDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.toDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.roomCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.visitorCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.totalPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Branch.name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fromDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.toDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.roomCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.visitorCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.totalPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.userId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Branch.name)
+                </td>
+                <td>
+
+                    @Html.ActionLink("Rate", "Rate", new { id = item.Id })
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+
+    @Scripts.Render("~/Scripts/DataTables/jquery.dataTables.js")
+    @Scripts.Render("~/Scripts/DataTables/dataTables.bootstrap.js")
+    <script>
+ $(document).ready(function () {
+ $('.table').DataTable();
+ });
+    </script>
+}
+<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css"
+      rel="stylesheet" />

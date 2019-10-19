@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+
+}
+    <html>
+    <head>
+       
+        <meta name="viewport" content="initial-scale=1.0">
+        <meta charset="utf-8">
+        <style>
+
+
+                /* Always set the map height explicitly to define the size of the div
+            * element that contains the map. */
+                #map {
+                    height: 50%;
+                }
+                /* Optional: Makes the sample page fill the window. */
+                /*html, body {
+                    height: 100%;
+                    margin: 0;
+                    padding: 0;
+                }*/
+        </style>
+    </head>
+    <body>
+
+        @section Scripts {
+             
+            <div   class="col-md-4"   ></div>
+            <div id="map1" class="col-md-4" style="height: 300px"></div>
+            <div class="col-md-4"></div>
+            <script>
+                var map;
+                function initMap() {
+
+
+                    var melBranch = { lat: -37.825549, lng: 144.957662 };
+                    map = new google.maps.Map(document.getElementById('map1'), {
+                        center: { lat: -37.8136, lng: 144.9631 },
+                        zoom: 10
+                    });
+
+                   
+                    var marker = new google.maps.Marker({ position: melBranch, map: map })
+                }
+            </script>
+
+            
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPKMXivFGElU_HkZLstosNCRUp3HWwiL4&callback=initMap" async defer></script>
+
+            
+
+        }
+    </body>
+    </html>

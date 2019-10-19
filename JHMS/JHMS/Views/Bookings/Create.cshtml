@@ -1,0 +1,159 @@
+﻿@model JHMS.Models.Booking
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+<!-- Code to wire up your DatePicker -->
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+
+@section Scripts {
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script>
+
+        
+
+
+
+        $(document).ready(function () {
+            $("#fromDate").val("");
+             $("#toDate").val("");
+            $("#visitorCount").val("");
+            $("#roomCount").text("0"); 
+            $("#totalPrice").text("0"); 
+
+            $("#roomCount").prop("readonly", true);
+                
+         });
+        
+
+        $(document).ready(function () {
+            $("#fromDate").datepicker({ dateFormat: 'yy-mm-dd' });
+
+        });
+
+        $(document).ready(function () {
+            $("#toDate").datepicker({ dateFormat: 'yy-mm-dd' });
+
+        });
+
+
+        $("#visitorCount").change(function () {
+            var v = $("#visitorCount").val();
+            if (v != null) {
+                if (v <= 0 || v > 30) {
+                    alert("Please enter 1-30 visitors.(If you need to book for  visitors more than 30, please contract a booking agent");
+                    $("#visitorCount").val("0");
+                     $("#roomCount").text("0"); 
+             $("#totalPrice").text("0"); 
+                    return;
+                }
+
+
+                var r = (v / 6);   //rounding to ceiling 
+              //  alert("v="+v +" r="+r);
+                r = Math.ceil(r);
+               
+                if (r > 0) {
+                    $("#roomCount").val(r); 
+                }
+            }
+
+            //roomCount
+
+        //do whatever you need to do on actual change of the value of the input field
+});
+
+
+    </script>
+}
+<style type="text/css">
+    .err {
+        color: #A94442;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+
+<div class="form-horizontal">
+    <h4>Booking</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.branchId, "Branch", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("branchId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.branchId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.fromDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.fromDate, new { htmlAttributes = new { @class = "form-control date-picker", autocomplete = "off", title = "Start date of your stay" } })
+            @Html.ValidationMessageFor(model => model.fromDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.toDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.toDate, new { htmlAttributes = new { @class = "form-control date-picker", autocomplete = "off", title = "end date of your stay" } })
+            @Html.ValidationMessageFor(model => model.toDate, "", new { @class = "text-danger" })
+            <div class="err">@ViewBag.Message</div>
+
+        </div>
+        <div class="alert-danger"></div>
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.visitorCount, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.visitorCount, new { htmlAttributes = new { @class = "form-control", title = "number of visitors to be expected to stay" } })
+            @Html.ValidationMessageFor(model => model.visitorCount, "", new { @class = "text-danger" }).
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.roomCount, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.roomCount, new { htmlAttributes = new { @class = "form-control", title = "number of rooms" } })
+
+            @*@Html.LabelFor(model => model.roomCount, new { @id = "roomCount" })*@
+
+        </div>
+    </div>
+
+
+    <div class="form-group" hidden="hidden">
+        @Html.LabelFor(model => model.totalPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.LabelFor(model => model.totalPrice, new { @id = "totalPrice" })
+           <input type="text" id="roomPrice" value=@ViewBag/>
+        </div>
+    </div>
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

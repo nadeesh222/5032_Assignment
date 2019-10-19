@@ -1,0 +1,43 @@
+﻿@model JHMS.Models.Discount
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Discount</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.value)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.value)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fromdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fromdate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.todate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.todate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

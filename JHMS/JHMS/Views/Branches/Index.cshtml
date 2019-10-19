@@ -1,0 +1,64 @@
+﻿@model IEnumerable<JHMS.Models.Branch>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.longitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.roomPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.availableRooms)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.latitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.longitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.roomPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.availableRooms)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "Melbourne";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Franston</h2>
+
+<html>
+<head>
+
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+
+
+        /* Always set the map height explicitly to define the size of the div
+            * element that contains the map. */
+        #map {
+            height: 50%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        /*html, body {
+                    height: 100%;
+                    margin: 0;
+                    padding: 0;
+                }*/
+    </style>
+</head>
+<body>
+
+    @section Scripts {
+
+        <div class="row">
+
+            <div class="col-md-2"></div>
+            <div id="map1" class="col-md-5" style="height: 300px"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-2"></div>
+            <div class="col-md-5">
+                <br /><br />
+                <h4> Address:  7, Karas street, Franskton</h4><br />
+                <h4> Contact Number: 0456737672</h4>
+
+
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+        </div>
+
+        <a class="btn btn-default" href="/Branches/FraAttractions">Show me Cafes</a>
+        <a class="btn btn-default" href="/Locations/Index">Search attractions</a>
+
+
+
+
+
+        <script>
+            var map;
+            function initMap() {
+
+
+
+                var melBranch = { lat: -38.148467, lng: 145.120608 };
+                map = new google.maps.Map(document.getElementById('map1'), {
+                    center: { lat: -38.148467, lng: 145.120608 },
+                    zoom: 4
+                });
+
+                var marker = new google.maps.Marker({
+                    position: melBranch, map: map,
+                    label: { color: '#000000', fontWeight: 'bold', fontSize: '18px', text: 'Frankston Branch(7, Karas street, Franskton)' }
+                });
+
+                map.addListener('center_changed', function () {
+                    // 3 seconds after the center of the map has changed, pan back to the
+                    // marker.
+                    window.setTimeout(function () {
+                        map.panTo(marker.getPosition());
+                    }, 3000);
+                });
+
+
+                marker.addListener('click', function () {
+                    map.setZoom(15);
+                    map.setCenter(marker.getPosition());
+                });
+            }
+        </script>
+
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPKMXivFGElU_HkZLstosNCRUp3HWwiL4&callback=initMap" async defer></script>
+
+
+
+    }
+
+
+</body>
+</html>

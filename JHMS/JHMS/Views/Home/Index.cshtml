@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<link href="~/Styles/site.css" rel="stylesheet" />
+
+<style >
+        .myfont{
+
+  font-size: 30x;
+   line-height: 2;
+    }
+
+</style>
+
+
+
+ 
+
+<script type="text/javascript">
+
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
+</script>
+
+<div class="row">
+    <div class="col-md-4">
+         
+    </div>
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-4">
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+
+        <img src="~/Images/home.jpg" class="img-responsive img-thumbnail rounded " />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+
+
+
+    </div>
+
+
+</div>
+
+ 
+
+
+
+
+<div class="row">
+    <div class="col-md-4" >
+        <h2>Melbourne</h2>
+        <p class="text-justify myfont">
+            Jetwing Melbourne is the main branch of our company which is located in close to the Melbourne city. If you want to be within 
+            simple walking distance of many attractions, our Jetwing Melbourne hotel will be a good selection for you that  is just within walking distance to the Federation square.
+            Federation Square is packed with creative structures, museums, art venues and restaurants that make it a fun and vibrant place to explore.
+        </p>
+        <p><a id="a1" class="btn btn-default" href="/Branches/Melbourne">Book Now</a></p>
+
+
+
+    </div>
+    <div class="col-md-4">
+        <h2>Frankston</h2>
+        <p class="text-justify myfont">
+            if you would like to stay a suburb in a country side near Dandenong area, Frankston is the best solution for you.You can get into our hotel in many ways. If you travel
+            on the public transport you may select Frankston train line to travel our hotel.There are many attractions in Frankston area.There are beautiful beaches,
+            parks,water falls,  many more attractions are located near the Frankston branch ogf our hotel.
+
+
+        </p>
+        <p><a class="btn btn-default" href="/Branches/Frankston">Book Now</a></p>
+
+
+
+
+
+    </div>
+    <div class="col-md-4">
+        <h2>Geelog</h2>
+        <p class="text-justify myfont">
+            Jetwing Geelog is located on of oicturesqure area in Melbourne.IF you  want to have a different experience outside Melbourne or of you are planning to visit 
+            on Great Ocean Road, our Jetwing Geelog is the best solution for you.There are many attractions such as Waterfront esplanade,Eastern beach,Weribee zoo, colorful
+            sculptures and many more attractions are located with the walking distance.
+            our NGO was established in 1970 by Mr. Thomas Ferncroft and currently have branches in every state in Australia.
+
+        </p>
+        <p><a class="btn btn-default" href="/Branches/Geelong">Book Now</a></p>
+        <p>
+            <a class="btn btn-default" href="/Ratings/Booking">Rate</a>
+            
+            <img src="~/Images/r.jpg" />
+        </p>
+    </div>
+</div>
+

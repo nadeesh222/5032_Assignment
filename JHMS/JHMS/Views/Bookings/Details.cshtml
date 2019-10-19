@@ -1,0 +1,75 @@
+﻿@model JHMS.Models.Booking
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Booking</h4>
+    <hr />
+    <dl class="form-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fromDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fromDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.toDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.toDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.roomCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.roomCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.visitorCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.visitorCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totalPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Branch.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Branch.name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

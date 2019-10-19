@@ -1,0 +1,81 @@
+﻿@model JHMS.Models.Booking
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+ 
+<style type="text/css">
+    .bg-secondary {
+      background-color: #868e96 !important
+
+}
+
+    .mb-2, .my-2 {
+    margin-bottom: .5rem !important
+}
+.text-white {
+    color: #fff !important
+}
+</style>
+
+<h2>Booking Summary</h2>
+
+<div >
+    <h4></h4>
+    <hr />
+
+    <table class="table">
+        <tr>
+            <td class="p-3 mb-2 bg-secondary text-white">
+                <h4>Branch</h4>
+            </td>
+           <td></td>
+            <td>
+                <h4>
+                    @Html.DisplayFor(model => model.Branch.name)
+                </h4>
+            </td>
+        </tr>
+        <tr>
+            <td class="p-3 mb-2 bg-secondary text-white">
+
+                <h4>From Date</h4>
+            </td>
+            <td></td>
+            <td> <h4>@Html.DisplayFor(model => model.fromDate)</h4></td>
+        </tr>
+        <tr>
+            <td class="p-3 mb-2 bg-secondary text-white">
+                <h4>To Date</h4>
+            </td>
+            <td></td>
+            <td> <h4>@Html.DisplayFor(model => model.toDate)</h4></td>
+        </tr>
+        <tr>
+            <td class="p-3 mb-2 bg-secondary text-white">
+                <h4>Visitor Count</h4>
+            </td>
+            <td></td>
+            <td> <h4>@Html.DisplayFor(model => model.visitorCount, "{0:dd-MMM-yyyy}")</h4></td>
+        </tr>
+        <tr>
+            <td class="p-3 mb-2 bg-secondary text-white">
+                <h4>Room Count</h4>
+            </td>
+            <td></td>
+            <td> <h4>@Html.DisplayFor(model => model.roomCount)</h4></td>
+        </tr>
+        <tr>
+            <td class="p-3 mb-2 bg-secondary text-white">
+                <h4>Total Value</h4>
+            </td>
+            <td></td>
+            <td> <h4>$@Html.DisplayFor(model => model.totalPrice)</h4></td>
+        </tr>
+    </table>
+
+    </div>
+
