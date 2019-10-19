@@ -50,8 +50,7 @@ namespace JHMS.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,value,fromdate,todate")] Discount discount, HttpPostedFileBase postedFile)
-        {
-          
+        {        
 
             if (discount.todate < discount.fromdate)
             {
@@ -60,7 +59,6 @@ namespace JHMS.Controllers
             }
 
             if (ModelState.IsValid) { 
- 
 
 
                 String serverPath = Server.MapPath("~/Uploads/");
@@ -70,8 +68,7 @@ namespace JHMS.Controllers
                 ViewBag.UMessage = "Invalid file type(valid types: png,jpeg,doc,pdf)";
                 return View(discount);
             }
-
-                
+                            
                 String filePath = serverPath + fileext;
                 
                 postedFile.SaveAs(filePath+ postedFile.FileName);

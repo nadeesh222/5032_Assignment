@@ -894,6 +894,10 @@
     <Content Include="Scripts\tinymce\themes\silver\theme.min.js" />
     <Content Include="Scripts\tinymce\tinymce.js" />
     <Content Include="Scripts\tinymce\tinymce.min.js" />
+    <Content Include="Uploads\.jpg" />
+    <Content Include="Uploads\.jpg111.jpg" />
+    <Content Include="Uploads\.jpgr.jpg" />
+    <Content Include="Uploads\.jpgr.jpg.jpg" />
     <Content Include="Utils\documents\details.pdf" />
     <EntityDeploy Include="Models\mapModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -1095,10 +1099,9 @@
     <Content Include="Scripts\tinymce\skins\ui\oxide\fonts\tinymce-mobile.woff" />
     <Content Include="Scripts\tinymce\skins\ui\oxide-dark\fonts\tinymce-mobile.woff" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
+    <Content Include="Uploads\.pdfdiscounts.pdf" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Uploads\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
