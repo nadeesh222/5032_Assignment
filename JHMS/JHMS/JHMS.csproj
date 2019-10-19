@@ -282,6 +282,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RatingsController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\UploadsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -362,6 +363,24 @@
     </Compile>
     <Compile Include="Models\Rating.cs">
       <DependentUpon>RateModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Upload.cs">
+      <DependentUpon>UploadModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UploadModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UploadModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UploadModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UploadModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UploadModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UploadModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -640,6 +659,16 @@
       <DependentUpon>RateModel.edmx</DependentUpon>
       <LastGenOutput>RateModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\UploadModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UploadModel.edmx</DependentUpon>
+      <LastGenOutput>UploadModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\UploadModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UploadModel.edmx</DependentUpon>
+      <LastGenOutput>UploadModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -757,6 +786,13 @@
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <EntityDeploy Include="Models\UploadModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UploadModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\UploadModel.edmx.diagram">
+      <DependentUpon>UploadModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -925,8 +961,15 @@
     <Content Include="Views\Locations\Details.cshtml" />
     <Content Include="Views\Locations\Edit.cshtml" />
     <Content Include="Views\Locations\Index.cshtml" />
+    <Content Include="Views\Uploads\Create.cshtml" />
+    <Content Include="Views\Uploads\Delete.cshtml" />
+    <Content Include="Views\Uploads\Details.cshtml" />
+    <Content Include="Views\Uploads\Edit.cshtml" />
+    <Content Include="Views\Uploads\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Uploads\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

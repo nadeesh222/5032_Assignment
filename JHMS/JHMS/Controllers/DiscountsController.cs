@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -48,16 +49,35 @@ namespace JHMS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,value,fromdate,todate")] Discount discount)
+        public ActionResult Create([Bind(Include = "Id,value,fromdate,todate")] Discount discount, HttpPostedFileBase postedFile)
         {
+          
+
             if (discount.todate < discount.fromdate)
             {
                 ViewBag.Message = "To date cannot be smaller than from date";
                 return View(discount);
             }
 
-            if (ModelState.IsValid)
-            {
+            if (ModelState.IsValid) { 
+ 
+
+
+                String serverPath = Server.MapPath("~/Uploads/");
+                String fileext = Path.GetExtension(postedFile.FileName);
+
+            if (!((fileext.Equals(".png")) || (fileext.Equals(".jpg")) || (fileext.Equals(".jpeg")) || (fileext.Equals(".doc")) || (fileext.Equals(".pdf")))){
+                ViewBag.UMessage = "Invalid file type(valid types: png,jpeg,doc,pdf)";
+                return View(discount);
+            }
+
+                
+                String filePath = serverPath + fileext;
+                
+                postedFile.SaveAs(filePath+ postedFile.FileName);
+
+
+
                 db.Discounts.Add(discount);
                 db.SaveChanges();
 
@@ -84,7 +104,7 @@ namespace JHMS.Controllers
                 String contents = "You will get  " + discount.value + "% discount on your booking from " + discount.fromdate + " to " + discount.todate + " for all the branches in Jetwing hotels.";
 
                 EmailSender es = new EmailSender();
-                es.SendBulkEmail(toEmail, subject, contents);
+                es.SendBulkEmail(toEmail, subject, contents, postedFile.FileName, filePath);
 
 
 

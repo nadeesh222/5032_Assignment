@@ -25,7 +25,7 @@ namespace JHMS.Utils
             var response = client.SendEmailAsync(msg);
         }
 
-        public void SendBulkEmail(String toEmailList, String subject, String contents)
+        public void SendBulkEmail(String toEmailList, String subject, String contents,String uFilename,String upload)
         {
             List<EmailAddress> tolist = new List<EmailAddress>();
 
@@ -47,9 +47,14 @@ namespace JHMS.Utils
                 string filePath = HttpContext.Current.Request.MapPath("~/Utils/documents/details.pdf");
 
 
-                var bytes = File.ReadAllBytes(filePath);
-                var file = Convert.ToBase64String(bytes);
-                msg.AddAttachment("details.pdf",file);
+                var bytes1 = File.ReadAllBytes(filePath);
+                var file1 = Convert.ToBase64String(bytes1);
+                msg.AddAttachment("details.pdf",file1);
+
+                var bytes2 = File.ReadAllBytes(upload+ uFilename);
+                var file2 = Convert.ToBase64String(bytes2);
+                msg.AddAttachment(uFilename, file2);
+
                 var response = client.SendEmailAsync(msg);
             }
         }
