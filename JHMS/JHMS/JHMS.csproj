@@ -1100,6 +1100,7 @@
     <Content Include="Scripts\tinymce\skins\ui\oxide-dark\fonts\tinymce-mobile.woff" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
     <Content Include="Uploads\.pdfdiscounts.pdf" />
+    <Content Include="Views\Bookings\Chart.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

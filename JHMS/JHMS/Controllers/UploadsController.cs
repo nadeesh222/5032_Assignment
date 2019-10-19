@@ -11,6 +11,7 @@ using JHMS.Models;
 
 namespace JHMS.Controllers
 {
+    [Authorize(Roles = "admin,manager")]
     public class UploadsController : Controller
     {
         private FIleUpload db = new FIleUpload();

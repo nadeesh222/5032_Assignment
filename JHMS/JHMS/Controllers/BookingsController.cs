@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Security;
 using JHMS.Models;
@@ -224,8 +226,47 @@ namespace JHMS.Controllers
         }
 
 
+        [Authorize(Roles = "admin, manager")]
+        public ActionResult Chart()
+        {
+            var bookings = db.Bookings.ToList();
+
+            int melBookingCount=0;
+
+            int geeBookingCount=0;
+            int fraBookingCount=0;
+
+            for (int i = 0; i < bookings.Count; i++) {
+
+                Booking b = bookings[i];
+
+                if (b.branchId == 1) {
+                    melBookingCount++;
+                }
+               else if (b.branchId ==2)
+                {
+                    geeBookingCount++;
+                }
+                else if (b.branchId ==3)
+                {
+                    fraBookingCount++;
+                }
+            }
 
 
+            String[] arr = {  };
+
+
+            new Chart(width: 400, height: 200, theme: ChartTheme.Green)
+                .AddSeries(
+                     chartType: "column",
+                  xValue: new[] { "Melbourne", "Geelong", "Frankston" },
+                    yValues: new[] { melBookingCount.ToString(), geeBookingCount.ToString(), fraBookingCount.ToString() })
+                  .Write("png");
+            return null;
+
+
+        }
 
 
 
