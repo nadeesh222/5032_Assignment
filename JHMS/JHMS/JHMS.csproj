@@ -769,13 +769,6 @@
     <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
     <Content Include="Scripts\location.js" />
     <Content Include="Utils\documents\details.pdf" />
-    <EntityDeploy Include="Models\RateModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RateModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\RateModel.edmx.diagram">
-      <DependentUpon>RateModel.edmx</DependentUpon>
-    </Content>
     <EntityDeploy Include="Models\mapModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>mapModel.Designer.cs</LastGenOutput>
@@ -792,6 +785,13 @@
     </EntityDeploy>
     <Content Include="Models\UploadModel.edmx.diagram">
       <DependentUpon>UploadModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\RateModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RateModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\RateModel.edmx.diagram">
+      <DependentUpon>RateModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

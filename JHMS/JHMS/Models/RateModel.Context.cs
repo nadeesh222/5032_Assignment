@@ -13,10 +13,10 @@ namespace JHMS.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class REntities : DbContext
+    public partial class rate1 : DbContext
     {
-        public REntities()
-            : base("name=REntities")
+        public rate1()
+            : base("name=rate1")
         {
         }
     

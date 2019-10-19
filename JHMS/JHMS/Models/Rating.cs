@@ -19,5 +19,6 @@ namespace JHMS.Models
         public Nullable<int> branchId { get; set; }
         public Nullable<int> bookingId { get; set; }
         public Booking booking { get; set; }
+        public string comment { get; set; }
     }
 }

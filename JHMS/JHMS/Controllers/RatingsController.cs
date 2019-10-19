@@ -13,7 +13,7 @@ namespace JHMS.Controllers
 {
     public class RatingsController : Controller
     {
-        private REntities db = new REntities();
+        private rate1 db = new rate1();
         private Entities db1 = new Entities();
 
         // GET: Ratings
@@ -103,7 +103,7 @@ namespace JHMS.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Rate([Bind(Include = "Id,rate,branchId,bookingId")] Rating rating)
+        public ActionResult Rate([Bind(Include = "Id,rate,branchId,bookingId,comment")] Rating rating)
         {
             if (ModelState.IsValid)
             {

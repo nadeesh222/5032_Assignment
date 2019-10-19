@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Nadeesh\5032 Assignment\JHMS\JHMS\Models\RateModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Nadeesh\5032 Assignment\5032 Assignment\JHMS\JHMS\Models\RateModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
