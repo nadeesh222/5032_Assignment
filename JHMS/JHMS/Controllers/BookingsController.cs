@@ -82,7 +82,6 @@ namespace JHMS.Controllers
             }
            
 
-
             ViewBag.branchId = new SelectList(db.Branches, "Id", "name", booking.branchId);
 
             var branch = db.Branches.Single(m => m.Id == booking.branchId);
